@@ -49,7 +49,7 @@ for item in $DIFFOUTPUT
 do
 	key=`echo $item | cut -d, -f1`
 	value=`echo $item | cut -d, -f2`
-    if [ "$key" != "core-file" ]; then
+    if [ "$key" != "core-file" -a "$key" != "explicit_defaults_for_timestamp" -a "$key" != "general_log_file" -a "$key" != "innodb_adaptive_hash_index" -a "$key" != "innodb_flush_neighbors" -a "$key" != "innodb_ft_max_token_size" ]; then
 	    PARAMETERS="--parameters \"name=$key, value=$value, method=immediate\""
 
         echo "Applying parameter $key=$value to newly created group ($2)"
@@ -58,7 +58,7 @@ do
         if [ "$?" -ne "0" ]; then
         	echo "Error occurred while modifying new group parameters."
         	echo "$MODIFY_OUTPUT"
-        	exit 1
+#        	exit 1
         fi
     fi
 done
