@@ -52,7 +52,7 @@ do
     if [ "$key" != "core-file" ]; then
 	    PARAMETERS="--parameters \"name=$key, value=$value, method=immediate\""
 
-        echo "Applying parameter to newly created group ($2)"
+        echo "Applying parameter $key=$value to newly created group ($2)"
         MODIFY_OUTPUT=`rds-modify-db-parameter-group $2 $PARAMETERS`
     
         if [ "$?" -ne "0" ]; then
