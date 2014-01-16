@@ -49,7 +49,7 @@ for item in $DIFFOUTPUT
 do
 	key=`echo $item | cut -d, -f1`
 	value=`echo $item | cut -d, -f2`
-    if [ "$key" != "core-file" ]
+    if [ "$key" != "core-file" ]; then
 	    PARAMETERS="--parameters \"name=$key, value=$value, method=immediate\""
 
         echo "Applying parameter to newly created group ($2)"
